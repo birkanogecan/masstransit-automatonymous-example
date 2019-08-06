@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightMessagingCore.Boilerplate.Messaging", "LightMessagingCore.Boilerplate.Messaging\LightMessagingCore.Boilerplate.Messaging.csproj", "{3A27E5FE-BCEB-478B-8DE7-3A9383E3A249}"
 EndProject
@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		LICENSE = LICENSE
-		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightMessagingCore.Boilerplate.Saga", "LightMessagingCore.Boilerplate.Saga\LightMessagingCore.Boilerplate.Saga.csproj", "{220D8B91-CC74-4E17-A80B-899264CD8880}"
@@ -56,5 +54,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F51287B-8A4F-4A5A-87FB-8093D3C24254}
 	EndGlobalSection
 EndGlobal
