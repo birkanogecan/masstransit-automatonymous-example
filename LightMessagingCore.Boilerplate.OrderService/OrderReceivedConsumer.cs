@@ -15,8 +15,17 @@ namespace LightMessagingCore.Boilerplate.OrderService
 
             //do something..
 
-            await context.Publish<IOrderProcessedEvent>(
-                new { CorrelationId = context.Message.CorrelationId, OrderId = orderCommand.OrderId });
+            if (orderCommand.OrderId < 5)
+            {
+                await context.Publish<IOrderProcessedEvent>(
+               new { CorrelationId = context.Message.CorrelationId, OrderId = orderCommand.OrderId });
+            }
+            else
+            {
+                await context.Publish<IOrderCanceledEvent>(
+               new { CorrelationId = context.Message.CorrelationId, OrderId = orderCommand.OrderId });
+            }
+           
         }
     }
 }

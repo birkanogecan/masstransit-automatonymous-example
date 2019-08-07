@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOrderCanceledEvent.cs" />
     <Compile Include="IOrderCommand.cs" />
     <Compile Include="IOrderProcessedEvent.cs" />
     <Compile Include="IOrderReceivedEvent.cs" />

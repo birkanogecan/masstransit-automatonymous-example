@@ -9,9 +9,11 @@ namespace LightMessagingCore.Boilerplate.Saga
     {
         public State Received { get; set; }
         public State Processed { get; set; }
+        public State Cancelled { get; set; }
 
         public Event<IOrderCommand> OrderCommand { get; set; }
         public Event<IOrderProcessedEvent> OrderProcessed { get; set; }
+        public Event<IOrderCanceledEvent> OrderCanceled { get; set; }
 
         public OrderSaga()
         {
@@ -24,6 +26,8 @@ namespace LightMessagingCore.Boilerplate.Saga
 
             Event(() => OrderProcessed, cec => cec.CorrelateById(selector =>
                         selector.Message.CorrelationId));
+            Event(() => OrderCanceled, cec => cec.CorrelateById(selector =>
+                       selector.Message.CorrelationId));
 
             Initially(
                 When(OrderCommand)
@@ -41,11 +45,20 @@ namespace LightMessagingCore.Boilerplate.Saga
 
 
             During(Received,
-                When(OrderProcessed)
+                When(OrderCanceled)
+                .Then(context =>
+                {
+                    Console.Out.WriteLineAsync($"{context.Data.OrderId} order id is cancelled..");
+                })
+                .Finalize());
+
+            During(Received,
+             When(OrderProcessed)
                 .ThenAsync(
                     context => Console.Out.WriteLineAsync($"{context.Data.OrderId} order id is processed.."))
                 .Finalize()
                 );
+
 
             SetCompletedWhenFinalized();
         }
